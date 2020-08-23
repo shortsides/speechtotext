@@ -1,9 +1,5 @@
 README!
 
-TITLE: Speech to Text
-NAME: Duncan Milne
-CITY: Sydney, Australia
-
 This web application transcribes audio files. Perfect for keeping 
 meeting notes for later!
 To use, first create a login and upload your .WAV audio file, then 
