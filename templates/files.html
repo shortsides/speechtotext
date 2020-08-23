@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Files
+{% endblock %}
+
+{% block main %}
+    <div class="container">
+      <h1>Analyze Audio File</h1>
+      <p>This simple web app uses Azure for speech-to-text conversion and keyword analysis of input text.</p>
+      {% if session.user_id %}
+        <div>
+          <div id="audio-playback">
+            {% for file in files %}
+              <audio id="audio" controls>
+                <source src="{{ url_for('static', filename = files_path + file['filename']) }}" id="audio-source" type="audio/mpeg" />
+              </audio>
+            {% endfor %}
+          </div>
+          <!-- Select list for audio files -->
+          <form action="/files" method="post">
+            <div class="form-group">
+              <select class="form-control" name="file">
+                  <option disabled selected>Audio File</option>
+                  {% for file in files %}
+                      <option value="{{ file["filename"] }}">{{ file["filename"] }}</option>
+                  {% endfor %}
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary mb-2" id="translate">Transcribe File</button>
+            <!-- Text detected in audio file is rendered here. -->
+            <div class="form-group" id="translator-text-response">
+              <label for="translation-result"><strong>Text:</strong></label>
+              <textarea readonly class="form-control" id="translation-result" rows="5">{{ text }}</textarea>
+            </div>
+          </form>
+        </div>
+      {% endif %}
+    </div>
+{% endblock %}

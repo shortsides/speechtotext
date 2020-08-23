@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+    <div class="container">
+      <h1>Analyze Audio File</h1>
+      <p>This simple web app uses Azure for speech-to-text conversion.</p>
+      {% if session.user_id %}
+      <table>
+        <thead>
+            <tr>
+              <th>Filename</th>
+              <th>File</th>
+              <th>Transcript</th>
+            </tr>
+        </thead>
+        <tbody>
+          {% for file in files %}
+            <tr>
+              <td>{{ file["filename"] }}</td>
+              <td id="audio-playback">
+                  <audio id="audio" controls>
+                    <source src="{{ url_for('static', filename = files_path + file['filename']) }}" id="audio-source" type="audio/mpeg" />
+                  </audio>
+              </td>
+              <td>{{ file["transcript"] }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+        <tfoot>
+        </tfoot>
+      </table>      
+      {% endif %}
+    </div>
+{% endblock %}

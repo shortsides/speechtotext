@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Upload
+{% endblock %}
+
+{% block main %}
+    <div class="container">
+      <h1>Upload Audio File</h1>
+      <p>Select a WAV file to upload.</p>
+      <div>
+        <form method="POST" enctype="multipart/form-data" action="/upload">
+          <input type="file" name="file" accept=".mp3, .wav">
+          <button type="submit" class="btn btn-primary mb-2" id="upload">Upload File</button>
+        </form>
+      </div>
+    </div>
+{% endblock %}
