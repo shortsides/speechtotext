@@ -25,7 +25,7 @@ app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
 # configure Microsoft Azure Speech
-speech_key, service_region = "292ab09aef3f4da0a287ad020f1c236b", "australiaeast"
+speech_key, service_region = "API KEY", "REGION"
 speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_region)
 
 # Configure CS50 Library to use SQLite database
